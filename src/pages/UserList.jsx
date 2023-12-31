@@ -68,7 +68,6 @@ const UserList = () => {
         <div className="cardContainer mt-8">
           {customerData.map((data, index) => (
             <UserCard key={index} data={data} currentMonth={currentMonth} />
-            //   {data[currentMonth] === "" ? <td>UNPAID</td> : <td>PAID</td>}
           ))}
         </div>
       </div>
