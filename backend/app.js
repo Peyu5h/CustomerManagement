@@ -27,7 +27,12 @@ app.use(cors()); // Enable CORS for all routes
 
 app.get("/", async function (req, res) {
   try {
-    const customers = await Customer.find();
+    const searchTerm = req.query.search;
+    const query = searchTerm
+      ? { NAME: { $regex: new RegExp(searchTerm, "i") } }
+      : {};
+
+    const customers = await Customer.find(query);
     res.json(customers);
   } catch (error) {
     console.error(error);

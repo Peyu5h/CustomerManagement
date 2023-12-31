@@ -98,7 +98,7 @@ const UserDetail = () => {
             UNPAID
           </div>
         ) : (
-          <div className="status bg-green-700 my-auto px-5 py-2 rounded-lg font-semibold">
+          <div className="status bg-green-600 my-auto px-5 py-2 rounded-lg font-semibold">
             PAID
           </div>
         )}
