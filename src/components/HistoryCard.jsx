@@ -245,7 +245,7 @@ const HistoryCard = () => {
       </div>
       {/* -------------------------------------------------------------- */}
       <div className="January">
-        <div className="bg-[#1D1D1D] p-4 rounded-lg mt-4">
+        <div className="bg-[#1D1D1D] p-4 rounded-lg my-4">
           <div className="historyCard flex justify-between ">
             <div className="month flex space-x-4 item-center">
               <h1 className="text-xl font-semibold">December</h1>

@@ -5,7 +5,7 @@ import HistoryCard from "../components/HistoryCard";
 const UserDetail = () => {
   return (
     <main>
-      <h1 className="mt-12 text-2xl font-semibold">ASHOK SURYAVAUSHI</h1>
+      <h1 className="mt-8 text-2xl font-semibold">ASHOK SURYAVAUSHI</h1>
       <div className="address flex gap-x-1 mt-2 text-[0.70rem] items-center">
         <FaLocationDot />
         <p className="">R/1RADHA BAI SUMER CHWALGAVDEVI ROADBHANDUP .W</p>
@@ -23,7 +23,7 @@ const UserDetail = () => {
       </div>
 
       <div className="status mt-12 flex justify-between">
-        <div className="text-2xl">
+        <div className="text-xl">
           <span className="font-semibold">Status:</span> March
         </div>
         <div className="status  bg-red-500 my-auto px-4 py-2 rounded-lg font-semibold">
@@ -80,6 +80,7 @@ const UserDetail = () => {
               <input
                 className="outline-none p-2  rounded-md bg-[#303030]"
                 type="text"
+                pattern="[0-9]*"
                 placeholder="Enter Amount"
               />
             </div>
@@ -93,6 +94,7 @@ const UserDetail = () => {
               <input
                 className="outline-none p-2  rounded-md bg-[#303030]"
                 type="text"
+                pattern="[0-9]*"
                 placeholder="Enter Amount"
               />
             </div>
@@ -103,12 +105,13 @@ const UserDetail = () => {
               <input
                 className="outline-none p-2  rounded-md bg-[#303030]"
                 type="text"
+                pattern="[0-9]*"
                 placeholder="Enter Amount"
               />
             </div>
           </div>
           <div className="btn flex justify-center">
-            <button className="bg-orange-500 py-2 px-5 font-semibold rounded-lg mt-8 mb-4">
+            <button className="bg-orange-500 py-2 px-5 text-white font-semibold rounded-lg mt-8 mb-4">
               UPDATE
             </button>
           </div>
@@ -120,8 +123,9 @@ const UserDetail = () => {
           <h1>History</h1>
           <LuHistory className="my-auto mt-2" />
         </div>
-
-        <HistoryCard />
+        <div className="">
+          <HistoryCard />
+        </div>
       </div>
     </main>
   );
