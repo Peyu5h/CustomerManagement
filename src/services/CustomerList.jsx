@@ -3,6 +3,28 @@ import { useState, useEffect } from "react";
 const CustomerList = () => {
   const [customerData, setCustomerData] = useState([]);
   const [currentMonth, setCurrentMonth] = useState("");
+  const [updateData, setUpdateData] = useState({});
+  const fieldsToUpdate = [
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+  ];
+
+  const handleInputChange = (field, value) => {
+    setUpdateData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
 
   //to get currentMonth
   useEffect(() => {
@@ -11,12 +33,10 @@ const CustomerList = () => {
     setCurrentMonth(Months.toLowerCase());
   }, []);
 
-  //fetch data from sheetdb
+  //fetch data from db
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://sheet.best/api/sheets/8d7b6f19-15e8-4464-8b11-768cdf585b17"
-      );
+      const response = await fetch("http://localhost:3000/");
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -33,33 +53,39 @@ const CustomerList = () => {
     fetchData();
   }, []);
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     try {
-      fetch("https://sheetdb.io/api/v1/rc7vy0jfmhe30/id/7", {
-        method: "PATCH",
+      const response = await fetch(`http://localhost:3000/update/4`, {
+        method: "POST",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          data: {
-            december: "456",
-          },
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-      const timeoutId = setTimeout(() => {
-        fetchData();
-      }, 3000);
-      return () => clearTimeout(timeoutId);
+        body: JSON.stringify(updateData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Update failed");
+      }
+
+      // Handle successful update, e.g., show a success message or redirect
+      console.log("Data updated successfully");
     } catch (error) {
       console.error("Error updating data:", error);
+      // Handle error, e.g., show an error message to the user
     }
   };
 
   return (
     <div>
+      {fieldsToUpdate.map((field) => (
+        <input
+          key={field}
+          type="text"
+          placeholder={field}
+          value={updateData[field] || ""}
+          onChange={(e) => handleInputChange(field, e.target.value)}
+        />
+      ))}
       <button className="bg-slate-300 p-2" onClick={handleUpdate}>
         UPDATE
       </button>
@@ -77,11 +103,7 @@ const CustomerList = () => {
               <td>{row.NAME}</td>
               <td>{row.STB_ID}</td>
 
-              {row[currentMonth] === ("" || null) ? (
-                <td>UNPAID</td>
-              ) : (
-                <td>PAID</td>
-              )}
+              {row[currentMonth] === "" ? <td>UNPAID</td> : <td>PAID</td>}
             </tr>
           ))}
         </tbody>
