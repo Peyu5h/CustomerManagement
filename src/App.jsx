@@ -7,7 +7,7 @@ const App = () => {
     <div className="h-screen w-full p-6">
       <Routes>
         <Route path="/" element={<UserList />} />
-        <Route path="/user" element={<UserDetail />} />
+        <Route path="/user/:id" element={<UserDetail />} />
       </Routes>
     </div>
   );
