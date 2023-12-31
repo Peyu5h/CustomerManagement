@@ -1,8 +1,9 @@
-import CustomerList from "./services/CustomerList";
+// import CustomerList from "./services/CustomerListOLD";
+import UserList from "./pages/UserList";
 const App = () => {
   return (
-    <div className="text-2xl">
-      <CustomerList />
+    <div className="h-screen w-full p-6">
+      <UserList />
     </div>
   );
 };

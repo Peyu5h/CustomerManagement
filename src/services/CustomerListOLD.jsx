@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CustomerList = () => {
   const [customerData, setCustomerData] = useState([]);
@@ -17,6 +19,7 @@ const CustomerList = () => {
     "october",
     "november",
     "december",
+    "january_balance",
   ];
 
   const handleInputChange = (field, value) => {
@@ -26,6 +29,21 @@ const CustomerList = () => {
     }));
   };
 
+  const notify = (message, type) => {
+    toast(message, {
+      type: type,
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      mobile: true,
+    });
+  };
+
   //to get currentMonth
   useEffect(() => {
     const currentDate = new Date();
@@ -33,7 +51,7 @@ const CustomerList = () => {
     setCurrentMonth(Months.toLowerCase());
   }, []);
 
-  //fetch data from db
+  //function to fetch data from db
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:3000/");
@@ -49,10 +67,12 @@ const CustomerList = () => {
     }
   };
 
+  //fetch data
   useEffect(() => {
     fetchData();
   }, []);
 
+  //function to update data
   const handleUpdate = async () => {
     try {
       const response = await fetch(`http://localhost:3000/update/4`, {
@@ -67,11 +87,13 @@ const CustomerList = () => {
         throw new Error("Update failed");
       }
 
-      // Handle successful update, e.g., show a success message or redirect
+      // Success: show success toast
+      notify("Data updated successfully", "success ");
       console.log("Data updated successfully");
     } catch (error) {
+      // Error: show error toast
+      notify("Error updating data", "error");
       console.error("Error updating data:", error);
-      // Handle error, e.g., show an error message to the user
     }
   };
 
@@ -108,6 +130,7 @@ const CustomerList = () => {
           ))}
         </tbody>
       </table>
+      <ToastContainer />
     </div>
   );
 };
