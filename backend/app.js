@@ -10,10 +10,7 @@ const cors = require("cors");
 
 const mongoURL = process.env.VITE_MONGO_URL;
 
-mongoose.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(mongoURL, {});
 
 const db = mongoose.connection;
 
@@ -51,6 +48,29 @@ app.get("/id/:id", async function (req, res) {
     }
 
     res.json(customer);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post("/update/:id", async function (req, res) {
+  try {
+    const id = req.params.id;
+    const updateData = req.body;
+
+    const updatedCustomer = await Customer.findOneAndUpdate(
+      { id: id },
+      { $set: updateData },
+      { new: true }
+    );
+
+    if (!updatedCustomer) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+
+    res.json(updatedCustomer);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

@@ -8,6 +8,8 @@ const UserList = () => {
   const [currentMonth, setCurrentMonth] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [sortField, setSortField] = useState("Sort By:");
+  const [sortData, setSortData] = useState("");
 
   useEffect(() => {
     const currentDate = new Date();
@@ -45,6 +47,24 @@ const UserList = () => {
     fetchData();
   }, []);
 
+  const handleSortPaid = () => {
+    setToggle(!toggle);
+    setSortField("PAID ");
+    setSortData("PAID");
+  };
+
+  const handleSortUnpaid = () => {
+    setToggle(!toggle);
+    setSortField("UNPAID");
+    setSortData("UNPAID");
+  };
+
+  const handleSortReset = () => {
+    setToggle(!toggle);
+    setSortField("All User");
+    setSortData("");
+  };
+
   return (
     <div>
       <div className="">
@@ -78,18 +98,31 @@ const UserList = () => {
 
           <div className="sort flex-col bg-slate-700 p-2 px-3 rounded-lg flex item-center justify-between w-28 ">
             <div onClick={() => setToggle(!toggle)} className="flex">
-              Sort By: <FaChevronDown className="ml-2 my-auto" />
+              {sortField} <FaChevronDown className="ml-2 my-auto" />
             </div>
             {toggle ? (
               <div className="sortbox">
                 <div className=" rounded-b-md bg-slate-700">
-                  <div className="text-md font-light px-2  mt-3 border-t-[1px] pt-3  transition-all border-slate-500 w-full">
+                  <div
+                    onClick={handleSortReset}
+                    className="text-md cursor-pointer font-light px-2  mt-3 border-t-[1px] pt-3  transition-all border-slate-500 w-full"
+                  >
+                    All User
+                  </div>
+
+                  <div
+                    onClick={handleSortPaid}
+                    className="text-md cursor-pointer font-light px-2  mt-3 border-t-[1px] pt-3  transition-all border-slate-500 w-full"
+                  >
                     PAID
                   </div>
 
                   <div className="divider h-[2px] w-full bg-slate-700 my-1 "></div>
                   <div className="flex flex-col   items-start justify-start">
-                    <div className="text-md cursor-pointer font-light p-2 border-t-[1px] pt-3  transition-all border-slate-500 w-full">
+                    <div
+                      onClick={handleSortUnpaid}
+                      className="text-md cursor-pointer font-light p-2 border-t-[1px] pt-3  transition-all border-slate-500 w-full"
+                    >
                       UNPAID
                     </div>
                   </div>
@@ -101,7 +134,7 @@ const UserList = () => {
         {/* --------------------------------------------- */}
         <div className="cardContainer mt-8">
           {customerData.length === 0 ? (
-            <div className="flex gap-y-6 flex-col justify-center items-center mt-40 text-2xl font-semibold">
+            <div className="flex gap-y-6 flex-col justify-center items-center mt-40 text-2xl font-semibold text-white">
               <h1>No User Found</h1>
               <button
                 onClick={fetchData}
@@ -111,9 +144,24 @@ const UserList = () => {
               </button>
             </div>
           ) : (
-            customerData.map((data, index) => (
-              <UserCard key={index} data={data} currentMonth={currentMonth} />
-            ))
+            customerData
+              .filter((data) => {
+                if (sortData === "PAID") {
+                  return (
+                    data[currentMonth] !== "" && data[currentMonth] !== null
+                  );
+                } else if (sortData === "UNPAID") {
+                  return !data[currentMonth] || data[currentMonth] === "";
+                }
+                return true;
+              })
+              .map((filteredData, index) => (
+                <UserCard
+                  key={index}
+                  data={filteredData}
+                  currentMonth={currentMonth}
+                />
+              ))
           )}
         </div>
       </div>

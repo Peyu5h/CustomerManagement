@@ -133,6 +133,18 @@ const customerSchema = new mongoose.Schema({
   december_advance: {
     type: Number,
   },
+  january_date: String,
+  february_date: String,
+  march_date: String,
+  april_date: String,
+  may_date: String,
+  june_date: String,
+  july_date: String,
+  august_date: String,
+  september_date: String,
+  october_date: String,
+  november_date: String,
+  december_date: String,
 });
 
 const Customer = mongoose.model("Customer", customerSchema);
