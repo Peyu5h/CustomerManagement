@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../assets/context/AuthContext";
 import { FaArrowRight } from "react-icons/fa6";
+import { FaBackspace } from "react-icons/fa";
 
 const Auth = () => {
   const { login } = useAuth();
@@ -11,7 +12,11 @@ const Auth = () => {
   const [passKey, setPassKey] = useState("");
 
   const handleButtonClick = (value) => {
-    setPassKey(passKey + value);
+    {
+      value !== "del"
+        ? setPassKey(passKey + value)
+        : setPassKey(passKey.slice(0, -1));
+    }
   };
 
   const handleChange = (e) => {
@@ -100,13 +105,21 @@ const Auth = () => {
             </div>
           </div>
         </div>
-        <button
-          onClick={handleSubmit}
-          className="bg-green-700 px-5 py-3 my-5 rounded-full flex text-lg"
-        >
-          Submit
-          <FaArrowRight className="item-center my-auto ml-2 text-lg" />
-        </button>
+        <div className="flex justify-between gap-x-6">
+          <div
+            onClick={() => handleButtonClick("del")}
+            className="one p-4 bg-red-500 text-white font-semibold text-center rounded-full px-5"
+          >
+            <FaBackspace className="my-auto flex item-center justify-center pt-1 text-lg" />
+          </div>
+          <button
+            onClick={handleSubmit}
+            className="bg-green-700 px-5 py-3  rounded-full flex text-lg"
+          >
+            Submit
+            <FaArrowRight className="item-center my-auto ml-2 text-lg" />
+          </button>
+        </div>
       </div>
     </div>
   );
