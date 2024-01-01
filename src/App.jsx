@@ -9,21 +9,23 @@ const App = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="h-screen w-full p-6">
-      <Routes>
-        <Route path="/" element={<Auth />} />
-        <Route path="/accessDenied" element={<AccessDenied />} />
+    <>
+      <div className="h-screen w-full ">
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route path="/accessDenied" element={<AccessDenied />} />
 
-        {isAuthenticated == true ? (
-          <>
-            <Route path="/users" element={<UserList />} />
-            <Route path="/user/:id" element={<UserDetail />} />
-          </>
-        ) : (
-          <Route path="*" element={<Navigate to="/accessDenied" />} />
-        )}
-      </Routes>
-    </div>
+          {isAuthenticated ? (
+            <>
+              <Route path="/users" element={<UserList />} />
+              <Route path="/user/:id" element={<UserDetail />} />
+            </>
+          ) : (
+            <Route path="*" element={<Navigate to="/accessDenied" />} />
+          )}
+        </Routes>
+      </div>
+    </>
   );
 };
 

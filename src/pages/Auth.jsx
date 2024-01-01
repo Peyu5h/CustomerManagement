@@ -32,7 +32,7 @@ const Auth = () => {
     }
   };
   return (
-    <div className="flex items-center justify-center h-screen w-full p-6">
+    <div className="flex items-center justify-center h-screen w-full p-12">
       <div className="flex flex-col gap-y-5 items-center justify-center  ">
         <input
           className="bg-slate-700 mb-4 p-4 rounded-lg outline-none placeholder:text-lg text-lg w-40 mx-auto text-center"

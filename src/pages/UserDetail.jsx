@@ -177,7 +177,7 @@ const UserDetail = () => {
   };
 
   return (
-    <main>
+    <main className="p-6">
       <h1 className="mt-12 text-2xl font-semibold">{customerData.NAME}</h1>
       <div className="address flex gap-x-1 mt-2 text-[0.70rem] items-center">
         <FaLocationDot />
