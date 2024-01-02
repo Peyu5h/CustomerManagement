@@ -13,7 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const UserDetail = () => {
-  const apiUrl = import.meta.env.VITE_API_URI;
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [customerData, setCustomerData] = useState([]);
   const [currentMonth, setCurrentMonth] = useState("");
   const [isCopiedSTB, setIsCopiedSTB] = useState(false);
@@ -48,7 +48,7 @@ const UserDetail = () => {
   //function to fetch data from db
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/id/${params.id}`);
+      const response = await fetch(`${apiUrl}id/${params.id}`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -141,23 +141,20 @@ const UserDetail = () => {
       const currentDate = new Date();
       const formattedDate = format(currentDate, "dd/MM/yyyy");
 
-      const response = await fetch(
-        `http://localhost:3000/update/${params.id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            [selectedMonth.toLowerCase()]: selectedAmount,
-            [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
-            [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
-            [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
-            [`${selectedMonth.toLowerCase()}_date`]:
-              selectedAmount.trim() !== "" ? formattedDate : null,
-          }),
-        }
-      );
+      const response = await fetch(`${apiUrl}update/${params.id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          [selectedMonth.toLowerCase()]: selectedAmount,
+          [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
+          [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
+          [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
+          [`${selectedMonth.toLowerCase()}_date`]:
+            selectedAmount.trim() !== "" ? formattedDate : null,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to update data");
