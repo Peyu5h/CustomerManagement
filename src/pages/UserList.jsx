@@ -17,7 +17,7 @@ const UserList = () => {
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setShowLoader(false);
-    }, 6700);
+    }, 7500);
 
     return () => clearTimeout(loadingTimeout);
   }, []);
