@@ -167,6 +167,10 @@ const UserDetail = () => {
 
       const updatedData = await response.json();
       setCustomerData(updatedData);
+      setSelectedMonth("");
+      setSelectedAmount("");
+      setSelectedBalance("");
+      setSelectedAdvance("");
     } catch (error) {
       // Error: show error toast
       notify("Error updating data", "error");
