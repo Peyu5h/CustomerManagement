@@ -4,6 +4,8 @@ import Auth from "./pages/Auth";
 import UserList from "./pages/UserList";
 import UserDetail from "./pages/UserDetail";
 import { useAuth } from "./assets/context/AuthContext";
+import AddUser from "./pages/AddUser";
+import DeleteUser from "./pages/DeleteUser";
 
 const App = () => {
   const { isAuthenticated } = useAuth();
@@ -19,6 +21,9 @@ const App = () => {
             <>
               <Route path="/users" element={<UserList />} />
               <Route path="/user/:id" element={<UserDetail />} />
+              <Route path="/addUser" element={<AddUser />} />
+              <Route path="/deleteUser" element={<DeleteUser />} />
+              <Route path="/exportUser" element={"www.google.com"} />
             </>
           ) : (
             <Route path="*" element={<Navigate to="/accessDenied" />} />

@@ -184,17 +184,19 @@ const UserDetail = () => {
   };
 
   return (
-    <main className="p-6">
-      <h1 className="mt-12 text-2xl font-semibold">{customerData.NAME}</h1>
-      <div className="address flex gap-x-1 mt-2 text-[0.70rem] items-center">
+    <main className="p-6 md:px-48">
+      <h1 className="mt-12 md:text-4xl text-2xl font-semibold">
+        {customerData.NAME}
+      </h1>
+      <div className="address md:text-[0.72rem] flex gap-x-1 mt-2 text-[0.70rem] items-center">
         <FaLocationDot />
         <p className="">{customerData.ADDRESS}</p>
       </div>
 
       <div className="stbAndCid flex justify-between mt-8 text-lg">
         <div className="stb flex text-sm items-center gap-x-2">
-          <h3>STB: {customerData.STB_ID}</h3>
-          <div className="copy" onClick={handleCopyClickSTB}>
+          <h3 className="md:text-lg">STB: {customerData.STB_ID}</h3>
+          <div className="copy cursor-pointer" onClick={handleCopyClickSTB}>
             {isCopiedSTB ? (
               <MdOutlineDone className="text-lg text-green-500" />
             ) : (
@@ -203,8 +205,8 @@ const UserDetail = () => {
           </div>
         </div>
         <div className="cid flex  text-sm items-center gap-x-2">
-          <h3>CID: {customerData.CUSTOMER_ID}</h3>
-          <div className="copy" onClick={handleCopyClickCID}>
+          <h3 className="md:text-lg">CID: {customerData.CUSTOMER_ID}</h3>
+          <div className="copy cursor-pointer" onClick={handleCopyClickCID}>
             {isCopiedCID ? (
               <MdOutlineDone className="text-lg text-green-500" />
             ) : (
@@ -215,8 +217,8 @@ const UserDetail = () => {
       </div>
 
       <div className="status mt-12 flex justify-between">
-        <div className="text-xl">
-          <span className="font-semibold">Status:</span> {currentMonth}
+        <div className="text-xl md:text-2xl">
+          <span className="font-semibold ">Status:</span> {currentMonth}
         </div>
         {customerData[currentMonth.toLowerCase()] === "" || null ? (
           <div className="status  bg-red-500 my-auto px-4 py-2 rounded-lg font-semibold">

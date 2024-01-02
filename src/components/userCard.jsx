@@ -6,7 +6,7 @@ const UserCard = ({ data, currentMonth }) => {
   return (
     <div>
       <Link to={`/user/${id}`}>
-        <div className="bg-[#1D1D1D] p-4 rounded-md shadow-md border-gray-600 my-4 text-[#C3C3C3]">
+        <div className="bg-[#1D1D1D] p-4 rounded-md shadow-md border-gray-600 my-4 md:my-5 text-[#C3C3C3]">
           <div className="nameStatus flex justify-between">
             <div className="div">
               <div className="name text-xl font-semibold mb-4">{NAME}</div>
