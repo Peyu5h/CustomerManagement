@@ -20,8 +20,9 @@ db.once("open", async function () {
 });
 
 app.use(bodyParser.json());
-app.use(cors()); // Enable CORS for all routes
+app.use(cors());
 
+//Searching
 app.get("/", async function (req, res) {
   try {
     const searchTerm = req.query.search;
@@ -37,6 +38,7 @@ app.get("/", async function (req, res) {
   }
 });
 
+//Finding Particular User
 app.get("/id/:id", async function (req, res) {
   try {
     const id = req.params.id;
@@ -54,29 +56,7 @@ app.get("/id/:id", async function (req, res) {
   }
 });
 
-app.post("/update/:id", async function (req, res) {
-  try {
-    const id = req.params.id;
-    const updateData = req.body;
-
-    const updatedCustomer = await Customer.findOneAndUpdate(
-      { id: id },
-      { $set: updateData },
-      { new: true }
-    );
-
-    if (!updatedCustomer) {
-      res.status(404).json({ error: "User not found" });
-      return;
-    }
-
-    res.json(updatedCustomer);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
+//Updating Data of Particular User
 app.post("/update/:id", async function (req, res) {
   try {
     const id = req.params.id;
