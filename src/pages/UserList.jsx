@@ -4,6 +4,7 @@ import { FaChevronDown } from "react-icons/fa";
 import UserCard from "../components/userCard";
 
 const UserList = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [customerData, setCustomerData] = useState([]);
   const [currentMonth, setCurrentMonth] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,9 +22,7 @@ const UserList = () => {
   const fetchData = async () => {
     try {
       setLoader(true);
-      const response = await fetch(
-        `http://localhost:3000/?search=${searchTerm}`
-      );
+      const response = await fetch(`${apiUrl}/?search=${searchTerm}`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
