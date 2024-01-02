@@ -38,20 +38,23 @@ const DeleteUser = () => {
   };
 
   return (
-    <div>
-      <h2>Delete User</h2>
-      <label>
-        User ID:
-        <input
-          type="text"
-          value={userId}
-          onChange={handleInputChange}
-          placeholder="Enter User ID"
-        />
-      </label>
-      <button onClick={handleDeleteUser}>Delete User</button>
-      <p>{resultMessage}</p>
-    </div>
+    <>
+      <div>
+        <h2>Delete User</h2>
+        <label>
+          User ID:
+          <input
+            type="text"
+            value={userId}
+            onChange={handleInputChange}
+            placeholder="Enter User ID"
+          />
+        </label>
+        <button onClick={handleDeleteUser}>Delete User</button>
+        <p>{resultMessage}</p>
+      </div>
+      <div className="text-6xl font-medium my-24 flex justify-center">{`KAL AANA :)`}</div>
+    </>
   );
 };
 

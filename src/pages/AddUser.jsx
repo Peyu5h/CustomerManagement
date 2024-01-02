@@ -45,56 +45,59 @@ const AddUserForm = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label>
-        NAME:
-        <input
-          type="text"
-          name="NAME"
-          value={formData.NAME}
-          onChange={handleInputChange}
-        />
-      </label>
+    <>
+      <form onSubmit={handleFormSubmit}>
+        <label>
+          NAME:
+          <input
+            type="text"
+            name="NAME"
+            value={formData.NAME}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        PHONE:
-        <input
-          type="text"
-          name="PHONE"
-          value={formData.PHONE}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        CUSTOMER_ID:
-        <input
-          type="text"
-          name="CUSTOMER_ID"
-          value={formData.CUSTOMER_ID}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        STB_ID:
-        <input
-          type="text"
-          name="STB_ID"
-          value={formData.STB_ID}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        ADDRESS:
-        <input
-          type="text"
-          name="ADDRESS"
-          value={formData.ADDRESS}
-          onChange={handleInputChange}
-        />
-      </label>
+        <label>
+          PHONE:
+          <input
+            type="text"
+            name="PHONE"
+            value={formData.PHONE}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          CUSTOMER_ID:
+          <input
+            type="text"
+            name="CUSTOMER_ID"
+            value={formData.CUSTOMER_ID}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          STB_ID:
+          <input
+            type="text"
+            name="STB_ID"
+            value={formData.STB_ID}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          ADDRESS:
+          <input
+            type="text"
+            name="ADDRESS"
+            value={formData.ADDRESS}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <button type="submit">Add User</button>
-    </form>
+        <button type="submit">Add User</button>
+      </form>
+      <div className="text-6xl font-medium my-24 flex justify-center">{`KAL AANA :)`}</div>
+    </>
   );
 };
 
