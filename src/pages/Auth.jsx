@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../assets/context/AuthContext";
 import { FaArrowRight } from "react-icons/fa6";
 import { FaBackspace } from "react-icons/fa";
@@ -31,8 +31,25 @@ const Auth = () => {
       navigate("/accessDenied");
     }
   };
+
+  //preventZoom
+  useEffect(() => {
+    document.body.classList.add("overflow-hidden");
+    document.addEventListener("gesturestart", preventZoom);
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+      document.removeEventListener("gesturestart", preventZoom);
+    };
+  }, []);
+
+  // Function to prevent zooming
+  const preventZoom = (event) => {
+    event.preventDefault();
+  };
   return (
-    <div className="flex items-center justify-center h-screen w-full p-12 no-scroll">
+    <div className="flex items-center justify-center h-screen w-full p-12 no-scroll overflow-hidden">
       <div className="flex flex-col gap-y-5 items-center justify-center  ">
         <input
           className="bg-slate-700 mb-4 p-4 rounded-lg outline-none placeholder:text-lg text-lg w-40 mx-auto text-center"
