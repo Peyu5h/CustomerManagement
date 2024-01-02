@@ -36,7 +36,7 @@ const Auth = () => {
     <div className="flex font-pop items-center justify-center h-screen w-full p-12 no-scroll overflow-hidden">
       <div className="flex flex-col gap-y-5 items-center justify-center  ">
         <input
-          className="bg-slate-700 mb-4 p-4 rounded-lg outline-none placeholder:text-lg text-sm w-46 mx-auto text-center"
+          className="bg-slate-700 mb-4 p-4 rounded-lg outline-none placeholder:text-lg text-sm w-40 placeholder:text-sm mx-auto text-center"
           placeholder="Enter Password"
           type="text"
           name=""
