@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const Customer = require("./customerSchema");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const PORT = process.env.PORT || 3000;
 
 const mongoURL = process.env.VITE_MONGO_URL;
 
@@ -80,6 +81,6 @@ app.post("/update/:id", async function (req, res) {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
