@@ -68,23 +68,6 @@ const UserList = () => {
     setSortData("");
   };
 
-  //preventZoom
-  useEffect(() => {
-    document.body.classList.add("overflow-hidden");
-    document.addEventListener("gesturestart", preventZoom);
-
-    // Cleanup on component unmount
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-      document.removeEventListener("gesturestart", preventZoom);
-    };
-  }, []);
-
-  // Function to prevent zooming
-  const preventZoom = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <div>
       {loader && (
