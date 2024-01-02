@@ -48,7 +48,9 @@ const UserDetail = () => {
   //function to fetch data from db
   const fetchData = async () => {
     try {
-      const response = await fetch(`${apiUrl}id/${params.id}`);
+      const response = await fetch(
+        `https://usermanagement-wsra.onrender.com/id/${params.id}`
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -141,20 +143,23 @@ const UserDetail = () => {
       const currentDate = new Date();
       const formattedDate = format(currentDate, "dd/MM/yyyy");
 
-      const response = await fetch(`${apiUrl}update/${params.id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          [selectedMonth.toLowerCase()]: selectedAmount,
-          [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
-          [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
-          [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
-          [`${selectedMonth.toLowerCase()}_date`]:
-            selectedAmount.trim() !== "" ? formattedDate : null,
-        }),
-      });
+      const response = await fetch(
+        `https://usermanagement-wsra.onrender.com/update/${params.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            [selectedMonth.toLowerCase()]: selectedAmount,
+            [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
+            [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
+            [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
+            [`${selectedMonth.toLowerCase()}_date`]:
+              selectedAmount.trim() !== "" ? formattedDate : null,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to update data");

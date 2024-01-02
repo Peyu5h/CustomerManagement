@@ -5,7 +5,7 @@ import UserCard from "../components/userCard";
 
 const UserList = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
-  console.log(`${apiUrl}?search=`);
+
   const [customerData, setCustomerData] = useState([]);
   const [currentMonth, setCurrentMonth] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
