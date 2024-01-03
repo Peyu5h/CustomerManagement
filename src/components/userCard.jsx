@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const UserCard = ({ data, currentMonth, onDeleteUser }) => {
+const UserCard = ({ data, currentMonth, onDeleteUser, onDeleteResponse }) => {
   const { id, NAME, PHONE, STB_ID } = data;
 
   const [isModalOpen, setIsModalOpen] = useState(false);

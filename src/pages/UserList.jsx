@@ -74,6 +74,10 @@ const UserList = () => {
     setSortData("");
   };
 
+  const bruh = () => {
+    console.log("bruh");
+  };
+
   return (
     <div>
       {loader ? (
@@ -256,6 +260,8 @@ const UserList = () => {
                       key={index}
                       data={filteredData}
                       currentMonth={currentMonth}
+                      onDeleteUser={bruh}
+                      onDeleteResponse={bruh}
                     />
                   ))
               )}
