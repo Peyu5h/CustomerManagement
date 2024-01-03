@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddUserForm = () => {
   const [formData, setFormData] = useState({
@@ -38,65 +40,130 @@ const AddUserForm = () => {
         console.error("Error adding user:", errorData);
         // Handle error, e.g., show an error message to the user
       }
+      notify("User added successfully", "success ");
+      setFormData({
+        NAME: "",
+        PHONE: "",
+        CUSTOMER_ID: "",
+        STB_ID: "",
+        ADDRESS: "",
+      });
     } catch (error) {
       console.error("Error:", error);
+      notify("Error updating data", "error");
       // Handle network errors or other issues
     }
   };
 
+  const notify = (message, type) => {
+    toast(message, {
+      type: type,
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      // mobile: true,
+    });
+  };
+
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-        <label>
-          NAME:
-          <input
-            type="text"
-            name="NAME"
-            value={formData.NAME}
-            onChange={handleInputChange}
-          />
-        </label>
+      <div className="p-6">
+        <h1 className="text-3xl font-semibold mt-2 ml-2 font-int">
+          Add New User
+        </h1>
 
-        <label>
-          PHONE:
-          <input
-            type="text"
-            name="PHONE"
-            value={formData.PHONE}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          CUSTOMER_ID:
-          <input
-            type="text"
-            name="CUSTOMER_ID"
-            value={formData.CUSTOMER_ID}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          STB_ID:
-          <input
-            type="text"
-            name="STB_ID"
-            value={formData.STB_ID}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          ADDRESS:
-          <input
-            type="text"
-            name="ADDRESS"
-            value={formData.ADDRESS}
-            onChange={handleInputChange}
-          />
-        </label>
+        <div className="container bg-[#1D1D1D] rounded-lg ">
+          <p className="mt-6 px-4 pt-4 ml-2 mb-2 text-lg uppercase font-pop flex">
+            Enter the details below:
+            {/* <FaArrowRightLong className="my-auto ml-3 text-lg" /> */}
+          </p>
+          <form
+            className="flex flex-col gap-y-4 text-xl px-4 pb-8"
+            onSubmit={handleFormSubmit}
+          >
+            <div className="nameAndPhone flex overflow-hidden">
+              <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full px-2 mt-3 justify-start font-bold mb-2">
+                FULL NAME:
+                <input
+                  className="p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                  type="text"
+                  name="NAME"
+                  value={formData.NAME}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter Full Name of Customer"
+                />
+              </label>
+            </div>
 
-        <button type="submit">Add User</button>
-      </form>
-      <div className="text-6xl font-medium my-24 flex justify-center">{`KAL AANA :)`}</div>
+            <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full px-2  justify-start font-bold mb-2">
+              Phone Number:
+              <input
+                className="p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                type="text"
+                name="PHONE"
+                value={formData.PHONE}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter Mobile Number of Customer"
+              />
+            </label>
+            <div className="cidAndstb flex overflow-hidden  mx-1 justify-between">
+              <label className=" w-auto flex flex-col text-[#c3C3C3] text-[1rem]  px-2  justify-start font-bold mb-2">
+                CUSTOMER ID:
+                <input
+                  className="w-36 p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                  type="text"
+                  name="CUSTOMER_ID"
+                  value={formData.CUSTOMER_ID}
+                  onChange={handleInputChange}
+                  placeholder="Enter CID"
+                  required
+                />
+              </label>
+              <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-auto  px-2  justify-start font-bold mb-2">
+                STB ID:
+                <input
+                  className="w-36 p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                  type="text"
+                  name="STB_ID"
+                  value={formData.STB_ID}
+                  onChange={handleInputChange}
+                  placeholder="Enter STB ID"
+                  required
+                />
+              </label>
+            </div>
+
+            <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full px-2  justify-start font-bold mb-2">
+              ADDRESS:
+              <textarea
+                rows="2"
+                className=" block p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                type="text"
+                name="ADDRESS"
+                value={formData.ADDRESS}
+                onChange={handleInputChange}
+                placeholder="Enter Address of Customer"
+                required
+              />
+            </label>
+
+            <button
+              type="submit"
+              className="px-4 py-2 bg-green-600 text-green mx-2 rounded-lg mt-4"
+            >
+              Add User
+            </button>
+          </form>
+        </div>
+        <ToastContainer />
+      </div>
     </>
   );
 };

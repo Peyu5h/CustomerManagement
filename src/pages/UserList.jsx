@@ -97,10 +97,10 @@ const UserList = () => {
                 onClick={() => setToggleMenu(false)}
               />
             </div>
-            <div className="flex flex-col gap-y-8 items-center justify-center h-full">
+            <div className="flex flex-col gap-y-5 text-start items-center font-int uppercase  justify-center h-full">
               <Link to="/adduser">
-                <h1 className="flex gap-x-3 text-3xl font-int font-medium">
-                  ADD USER
+                <h1 className="flex gap-x-3 text-3xl  font-int font-medium">
+                  INSERT USER
                   <IoAddOutline className="text-4xl my-auto" />
                 </h1>
               </Link>
