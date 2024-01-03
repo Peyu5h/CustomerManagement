@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import UserCard from "../components/UserCard";
+import UserCard from "../components/UserCard.jsx";
 import { IoSearch } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
