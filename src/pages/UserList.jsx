@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
 import { FaChevronDown } from "react-icons/fa";
-import UserCard from "../components/userCard";
+import UserCard from "../components/UserCard";
 import { RxCross2 } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { IoAddOutline } from "react-icons/io5";
