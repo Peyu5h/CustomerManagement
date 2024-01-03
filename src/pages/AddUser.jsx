@@ -109,6 +109,8 @@ const AddUserForm = () => {
                 className="p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
                 type="text"
                 name="PHONE"
+                pattern="[0-9]*"
+                inputMode="numeric"
                 value={formData.PHONE}
                 onChange={handleInputChange}
                 required
@@ -158,9 +160,9 @@ const AddUserForm = () => {
 
             <button
               type="submit"
-              className="px-4 py-2 bg-green-600 text-green mx-2 rounded-lg mt-4"
+              className="px-4 py-2 text-white bg-green-600 text-green mx-2 rounded-lg mt-4"
             >
-              Add User
+              ADD USER{" "}
             </button>
           </form>
         </div>
