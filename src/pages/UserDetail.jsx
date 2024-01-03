@@ -37,6 +37,7 @@ const UserDetail = () => {
     December: "",
   });
 
+  const apiUrl = import.meta.env.VITE_API_URL;
   const params = useParams();
 
   useEffect(() => {
@@ -143,23 +144,20 @@ const UserDetail = () => {
       const currentDate = new Date();
       const formattedDate = format(currentDate, "dd/MM/yyyy");
 
-      const response = await fetch(
-        `https://usermanagement-wsra.onrender.com/update/${params.id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            [selectedMonth.toLowerCase()]: selectedAmount,
-            [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
-            [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
-            [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
-            [`${selectedMonth.toLowerCase()}_date`]:
-              selectedAmount.trim() !== "" ? formattedDate : null,
-          }),
-        }
-      );
+      const response = await fetch(`${apiUrl}/update/${params.id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          [selectedMonth.toLowerCase()]: selectedAmount,
+          [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
+          [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
+          [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
+          [`${selectedMonth.toLowerCase()}_date`]:
+            selectedAmount.trim() !== "" ? formattedDate : null,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to update data");
