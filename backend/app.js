@@ -200,7 +200,7 @@ app.post("/addUser", async function (req, res) {
 });
 
 //delete user
-// Deleting a User
+
 app.delete("/delete", async function (req, res) {
   try {
     const id = req.query.id;

@@ -61,7 +61,7 @@ const DeleteUser = () => {
 
   const handleDeleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/delete?id=${id}`, {
+      const response = await fetch(`${apiUrl}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

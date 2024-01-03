@@ -11,6 +11,8 @@ const AddUserForm = () => {
     ADDRESS: "",
   });
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -23,7 +25,7 @@ const AddUserForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/addUser", {
+      const response = await fetch(`${apiUrl}/addUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
