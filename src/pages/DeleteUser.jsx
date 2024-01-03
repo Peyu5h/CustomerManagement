@@ -9,13 +9,6 @@ const DeleteUser = () => {
   const [loader, setLoader] = useState(true);
   const [customerData, setCustomerData] = useState([]);
 
-  const [currentMonth, setCurrentMonth] = useState("");
-  useEffect(() => {
-    const currentDate = new Date();
-    const Months = currentDate.toLocaleString("en-US", { month: "long" });
-    setCurrentMonth(Months.toLowerCase());
-  }, []);
-
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const fetchData = async () => {
