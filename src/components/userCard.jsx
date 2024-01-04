@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const UserCard = ({ data, currentMonth, onDeleteUser, onDeleteResponse }) => {
+const UserCard = ({ data, currentMonth, onDeleteUser }) => {
   const { id, NAME, PHONE, STB_ID } = data;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -134,6 +135,17 @@ const UserCard = ({ data, currentMonth, onDeleteUser, onDeleteResponse }) => {
       )}
     </div>
   );
+};
+
+UserCard.propTypes = {
+  data: PropTypes.object,
+  currentMonth: PropTypes.string,
+  onDeleteUser: PropTypes.func,
+  onDeleteResponse: PropTypes.func,
+  id: PropTypes.string,
+  NAME: PropTypes.string,
+  PHONE: PropTypes.string,
+  STB_ID: PropTypes.string,
 };
 
 export default UserCard;

@@ -89,11 +89,12 @@ const UserList = () => {
           />
         </div>
       ) : (
-        <div className="relative">
+        <div className="relative ">
           <div
-            className={`menuSlider fixed inset-0 bg-[#1D1D1D] transition-transform duration-300 ${
+            className={`menuSlider fixed inset-0 bg-[#1D1D1D] transition-transform duration-300  ${
               toggleMenu ? "translate-x-0" : "translate-x-full"
             } `}
+            style={{ zIndex: 2 }}
           >
             <div className="flex justify-end p-4">
               <RxCross2
@@ -124,10 +125,10 @@ const UserList = () => {
               </h1>
             </div>
           </div>
-          <div className="p-6 lg:px-64">
+          <div className="p-6 md:px-56">
             <nav className="flex justify-between w-full">
               {/* logo */}
-              <div className="hidden cursor-pointer md:flex logo gap-x-2">
+              <div className="hidden cursor-pointer lg:flex logo gap-x-2">
                 <img
                   className="w-20"
                   src="https://assets-global.website-files.com/64c4b66a44c38c5fa4309e5a/6593f7b056f85cda48a3c672_saiKrupaLogo.png"
@@ -188,20 +189,23 @@ const UserList = () => {
               </div>
             </nav>
             {/* --------------------------------------------- */}
-            <div className="container mt-12 flex justify-between item">
+            <div></div>
+            <div
+              className="relative container mt-12 flex justify-between item"
+              style={{ zIndex: 1 }}
+            >
               <div className="AllUsers flex gap-x-2">
                 <h1 className="text-2xl font-bold">All Users</h1>
                 <span className="text-lg font-thin mt-1">
                   ({customerData.length})
                 </span>
               </div>
-
-              <div className="sort flex-col cursor-pointer bg-slate-700 p-2 px-3 rounded-lg flex item-center justify-between w-28 ">
+              <div className="absolute right-0 sort flex-col cursor-pointer bg-slate-700 p-2 px-3 rounded-lg flex item-center justify-between w-28 ">
                 <div onClick={() => setToggle(!toggle)} className="flex">
                   {sortField} <FaChevronDown className="ml-2 my-auto" />
                 </div>
                 {toggle ? (
-                  <div className="sortbox">
+                  <div className="sortbox ">
                     <div className=" rounded-b-md  bg-slate-700">
                       <div
                         onClick={handleSortReset}

@@ -36,11 +36,9 @@ const AddUserForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("User added successfully:", data);
-        // Handle success, e.g., show a success message or redirect
       } else {
         const errorData = await response.json();
         console.error("Error adding user:", errorData);
-        // Handle error, e.g., show an error message to the user
       }
       notify("User added successfully", "success ");
       setFormData({
@@ -53,7 +51,6 @@ const AddUserForm = () => {
     } catch (error) {
       console.error("Error:", error);
       notify("Error updating data", "error");
-      // Handle network errors or other issues
     }
   };
 
@@ -74,7 +71,7 @@ const AddUserForm = () => {
 
   return (
     <>
-      <div className="p-6">
+      <div className="p-6 md:mx-48 md:mt-8">
         <h1 className="text-3xl font-semibold mt-2 ml-2 font-int">
           Add New User
         </h1>
@@ -85,11 +82,11 @@ const AddUserForm = () => {
             {/* <FaArrowRightLong className="my-auto ml-3 text-lg" /> */}
           </p>
           <form
-            className="flex flex-col gap-y-4 text-xl px-4 pb-8"
+            className="flex flex-col gap-y-4 text-xl px-4 pb-8 "
             onSubmit={handleFormSubmit}
           >
-            <div className="nameAndPhone flex overflow-hidden">
-              <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full px-2 mt-3 justify-start font-bold mb-2">
+            <div className="nameAndPhone flex flex-col md:flex-row justify-between items-center gap-x-12 overflow-hidden">
+              <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full md:w-1/2 px-2 mt-3 justify-start font-bold mb-2 md:mb-0 md:mt-0">
                 FULL NAME:
                 <input
                   className="p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
@@ -101,27 +98,27 @@ const AddUserForm = () => {
                   placeholder="Enter Full Name of Customer"
                 />
               </label>
+              <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full md:w-1/2 px-2  justify-start font-bold my-2 ">
+                Phone Number:
+                <input
+                  className="p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                  type="text"
+                  name="PHONE"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
+                  value={formData.PHONE}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter Mobile Number of Customer"
+                />
+              </label>
             </div>
 
-            <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-full px-2  justify-start font-bold mb-2">
-              Phone Number:
-              <input
-                className="p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
-                type="text"
-                name="PHONE"
-                pattern="[0-9]*"
-                inputMode="numeric"
-                value={formData.PHONE}
-                onChange={handleInputChange}
-                required
-                placeholder="Enter Mobile Number of Customer"
-              />
-            </label>
             <div className="cidAndstb flex overflow-hidden  mx-1 justify-between">
               <label className=" w-auto flex flex-col text-[#c3C3C3] text-[1rem]  px-2  justify-start font-bold mb-2">
                 CUSTOMER ID:
                 <input
-                  className="w-36 p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                  className="md:w-[30rem] w-36 p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
                   type="text"
                   name="CUSTOMER_ID"
                   value={formData.CUSTOMER_ID}
@@ -133,7 +130,7 @@ const AddUserForm = () => {
               <label className="flex flex-col text-[#c3C3C3] text-[1rem]  w-auto  px-2  justify-start font-bold mb-2">
                 STB ID:
                 <input
-                  className="w-36 p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
+                  className="md:w-[30rem] w-36 p-2 pl-3 font-int rounded-md outline-none font-light text-sm placeholder:text-slate-400 bg-slate-700 mt-1"
                   type="text"
                   name="STB_ID"
                   value={formData.STB_ID}

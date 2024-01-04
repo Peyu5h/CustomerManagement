@@ -44,23 +44,23 @@ const Auth = () => {
           readOnly={true}
           onChange={handleChange}
         />
-        <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-6 select-none">
           <div className="row1 flex gap-x-5">
             <div
               onClick={() => handleButtonClick("1")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 "
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               1
             </div>
             <div
               onClick={() => handleButtonClick("2")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 "
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               2
             </div>
             <div
               onClick={() => handleButtonClick("3")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 "
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               3
             </div>
@@ -68,19 +68,19 @@ const Auth = () => {
           <div className="row2 flex gap-x-5">
             <div
               onClick={() => handleButtonClick("4")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6"
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               4
             </div>
             <div
               onClick={() => handleButtonClick("5")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6"
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               5
             </div>
             <div
               onClick={() => handleButtonClick("6")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6"
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               6
             </div>
@@ -88,19 +88,19 @@ const Auth = () => {
           <div className="row2 flex gap-5">
             <div
               onClick={() => handleButtonClick("7")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6"
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               7
             </div>
             <div
               onClick={() => handleButtonClick("8")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6"
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               8
             </div>
             <div
               onClick={() => handleButtonClick("9")}
-              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6"
+              className="one p-4 bg-orange-500 text-white font-semibold text-center rounded-full px-6 cursor-pointer"
             >
               9
             </div>
@@ -115,7 +115,7 @@ const Auth = () => {
           </div>
           <button
             onClick={handleSubmit}
-            className="bg-green-700 px-5 py-3  rounded-full flex text-lg"
+            className="bg-green-700 px-5 py-3  rounded-full flex text-lg select-none"
           >
             Submit
             <FaArrowRight className="item-center my-auto ml-2 text-lg" />

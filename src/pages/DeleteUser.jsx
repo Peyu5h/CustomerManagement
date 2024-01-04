@@ -113,7 +113,7 @@ const DeleteUser = () => {
         </div>
       ) : (
         <div>
-          <div className="flex gap-x-4 justify-center my-5 ">
+          <div className="flex gap-x-4 justify-center my-5">
             <div className="search flex justify-center h-12 gap-x-3 mt-3 md:mx-0 ">
               <input
                 className="p-2 rounded-lg pl-5 w-48 md:w-56 text-sm bg-slate-700 outline-none"
@@ -134,7 +134,7 @@ const DeleteUser = () => {
             <div className="nav"></div>
           </div>
 
-          <div className="cardContainer mt-8 mx-4">
+          <div className="cardContainer mt-8 mx-4 md:mx-56">
             {customerData.length === 0 ? (
               <div className="flex gap-y-6 flex-col justify-center items-center mt-40 text-2xl font-semibold text-white">
                 <h1>No User Found</h1>

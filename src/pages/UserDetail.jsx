@@ -13,7 +13,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const UserDetail = () => {
-  // const apiUrl = import.meta.env.VITE_API_URL;
   const [customerData, setCustomerData] = useState([]);
   const [currentMonth, setCurrentMonth] = useState("");
   const [isCopiedSTB, setIsCopiedSTB] = useState(false);
