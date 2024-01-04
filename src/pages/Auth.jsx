@@ -7,6 +7,7 @@ import { FaBackspace } from "react-icons/fa";
 const Auth = () => {
   const { login } = useAuth();
   const password = import.meta.env.VITE_PASS_KEY;
+  console.log(password);
 
   const navigate = useNavigate();
   const [passKey, setPassKey] = useState("");
@@ -33,11 +34,12 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex font-pop items-center justify-center h-screen w-full p-12 no-scroll overflow-hidden">
+    <div className="flex font-pop flex-col  items-center justify-center h-screen w-full p-12 no-scroll overflow-hidden">
+      <h1 className="text-xl pb-6">Default PIN: 123</h1>
       <div className="flex flex-col gap-y-5 items-center justify-center  ">
         <input
           className="bg-slate-700 mb-4 p-4 rounded-lg outline-none text-sm w-40 placeholder:text-sm  mx-auto text-center"
-          placeholder="Enter Password"
+          placeholder="Enter PIN"
           type="text"
           name=""
           value={passKey}
