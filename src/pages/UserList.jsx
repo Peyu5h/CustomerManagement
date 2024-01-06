@@ -195,9 +195,13 @@ const UserList = () => {
               style={{ zIndex: 1 }}
             >
               <div className="AllUsers flex gap-x-2">
-                <h1 className="text-2xl font-bold">All Users</h1>
+                 <h1 className="text-2xl font-bold">All Users</h1>
                 <span className="text-lg font-thin mt-1">
-                  ({customerData.length})
+                  {sortField == "All User" || sortField == "Sort By:"
+                    ? `(${customerData.length})`
+                    : sortField == "UNPAID"
+                    ? `(${customerData.length - sortField.length})`
+                    : `(${sortField.length})`}
                 </span>
               </div>
               <div className="absolute right-0 sort flex-col cursor-pointer bg-slate-700 p-2 px-3 rounded-lg flex item-center justify-between w-28 ">
