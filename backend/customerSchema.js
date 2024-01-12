@@ -184,6 +184,19 @@ const customerSchema = new mongoose.Schema({
   october_date: String,
   november_date: String,
   december_date: String,
+
+  january_paid_via: String,
+  february_paid_via: String,
+  march_paid_via: String,
+  april_paid_via: String,
+  may_paid_via: String,
+  june_paid_via: String,
+  july_paid_via: String,
+  august_paid_via: String,
+  september_paid_via: String,
+  october_paid_via: String,
+  november_paid_via: String,
+  december_paid_via: String,
 });
 
 const Customer = mongoose.model("Customer", customerSchema);

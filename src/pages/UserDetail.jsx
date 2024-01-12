@@ -2,6 +2,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdContentCopy } from "react-icons/md";
 import { LuHistory } from "react-icons/lu";
 import { MdOutlineDone } from "react-icons/md";
+import { FiUpload } from "react-icons/fi";
 
 import { format } from "date-fns";
 
@@ -21,6 +22,7 @@ const UserDetail = () => {
   const [selectedAmount, setSelectedAmount] = useState("");
   const [selectedBalance, setSelectedBalance] = useState("");
   const [selectedAdvance, setSelectedAdvance] = useState("");
+  const [paidVia, setPaidVia] = useState("upi");
   const [dates, setDates] = useState({
     January: "",
     February: "",
@@ -48,9 +50,7 @@ const UserDetail = () => {
   //function to fetch data from db
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        `https://usermanagement-wsra.onrender.com/id/${params.id}`
-      );
+      const response = await fetch(`http://localhost:3000/id/${params.id}`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -93,6 +93,11 @@ const UserDetail = () => {
   const handleAdvanceChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedAdvance(selectedValue);
+  };
+
+  const handlePayVia = (event) => {
+    const selectedValue = event.target.value;
+    setPaidVia(selectedValue);
   };
 
   //fetch data
@@ -153,6 +158,8 @@ const UserDetail = () => {
           [`${selectedMonth.toLowerCase()}_advance`]: selectedAdvance,
           [`${selectedMonth.toLowerCase()}_balance`]: selectedBalance,
           [`${selectedMonth.toLowerCase()}_date`]: formattedDate,
+          [`${selectedMonth.toLowerCase()}_paid_via`]:
+            selectedAmount.trim() !== "" ? paidVia : null,
           [`${selectedMonth.toLowerCase()}_date`]:
             selectedAmount.trim() !== "" ? formattedDate : null,
         }),
@@ -171,6 +178,7 @@ const UserDetail = () => {
       setSelectedAmount("");
       setSelectedBalance("");
       setSelectedAdvance("");
+      setPaidVia("upi");
     } catch (error) {
       // Error: show error toast
       notify("Error updating data", "error");
@@ -315,13 +323,31 @@ const UserDetail = () => {
               />
             </div>
           </div>
-          <div className="btn flex justify-center">
-            <button
-              onClick={handleUpdate}
-              className="bg-orange-500 py-2 px-5 text-white font-semibold rounded-lg mt-8 mb-4"
-            >
-              UPDATE
-            </button>
+          <div className="balanceAndAdvance flex justify-between gap-x-2 mt-8 mb-8">
+            <div className="month flex flex-col w-[40%]">
+              <label className="flex w-auto text-sm mb-1 gap-x-1" htmlFor="">
+                <div className="relative ml-1">Paid Via</div>
+              </label>
+              <select
+                className="outline-none p-2  rounded-md bg-[#303030]"
+                name="selectedPaidVia"
+                value={paidVia}
+                onChange={handlePayVia}
+              >
+                <option value={"upi"}>UPI</option>
+                <option value={"cash"}>Cash</option>
+              </select>
+            </div>
+
+            <div className="btn flex justify-center w-[40%]  my-auto mt-6 rounded-lg bg-orange-500">
+              <button
+                onClick={handleUpdate}
+                className="bg-orange-500 flex gap-x-2 py-2 px-3 text-white font-semibold rounded-lg"
+              >
+                UPDATE
+                <FiUpload className="my-auto" />
+              </button>
+            </div>
           </div>
         </form>
       </div>
