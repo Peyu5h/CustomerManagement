@@ -50,7 +50,9 @@ const UserDetail = () => {
   //function to fetch data from db
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/id/${params.id}`);
+      const response = await fetch(
+        `https://customermanagement.onrender.com/id/${params.id}`
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -339,11 +341,11 @@ const UserDetail = () => {
               </select>
             </div>
 
-            <div className="btn flex justify-center w-[40%]  my-auto mt-6 rounded-lg bg-orange-500">
-              <button
-                onClick={handleUpdate}
-                className="bg-orange-500 flex gap-x-2 py-2 px-3 text-white font-semibold rounded-lg"
-              >
+            <div
+              onClick={handleUpdate}
+              className="btn flex justify-center w-[40%]  my-auto mt-6 rounded-lg bg-orange-500"
+            >
+              <button className="bg-orange-500 flex gap-x-2 py-2 px-3 text-white font-semibold rounded-lg">
                 UPDATE
                 <FiUpload className="my-auto" />
               </button>
