@@ -195,7 +195,7 @@ const UserList = () => {
               style={{ zIndex: 1 }}
             >
               <div className="AllUsers flex gap-x-2">
-                <h1 className="text-2xl font-bold">All Users</h1>
+                 <h1 className="text-2xl font-bold">All Users</h1>
                 <span className="text-lg font-thin mt-1">
                   {sortField == "All User" || sortField == "Sort By:"
                     ? `(${customerData.length})`
